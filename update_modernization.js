@@ -213,7 +213,7 @@ function update(type, data)
 			write("sp_modernization_log.txt", csv);
 		}
 	}
-	if (type == DataType.PORT) {
+	if (type == DataType.PORT || type == DataType.REMODELING) {
 		store_all_ships();
 	}
 }
