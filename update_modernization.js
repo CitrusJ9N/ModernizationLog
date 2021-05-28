@@ -177,7 +177,7 @@ function filter_log(data)
 		return s || x.getName().contains("まるゆ");
 	}, false);
 	var kaivo = materials.reduce(function (s, x) {
-		return s || x.getStype() == 0;
+		return s || x.getStype() == 1;
 	}, false);
 	
 	var target = get_target(data).getName();
@@ -213,7 +213,9 @@ function update(type, data)
 			write("sp_modernization_log.txt", csv);
 		}
 	}
-	if (type == DataType.PORT || type == DataType.REMODELING) {
+	
+	//改造（api_get_member/remodelingではshipMapが更新されないので、後続のapi_get_member/materialで保存データを更新する）
+	if (type == DataType.PORT || DataType.MATERIAL || DataType.GET_SHIP) {
 		store_all_ships();
 	}
 }
